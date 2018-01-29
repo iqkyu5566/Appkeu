@@ -13,6 +13,7 @@ class Hasil_transaksi extends CI_Controller
         $this->load->model('Hasil_transaksi_model');
         $this->load->model('Transaksi_model');
         $this->load->library('form_validation');
+        $this->load->library('pdf');
     }
 
     public function index()
@@ -110,6 +111,34 @@ class Hasil_transaksi extends CI_Controller
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('transaksi'));
         }
+    }
+
+    function laporan_detailt(){
+        $pdf = new FPDF('l','mm','A5');
+        // membuat halaman baru
+        $pdf->AddPage();
+        // setting jenis font yang akan digunakan
+        $pdf->SetFont('Arial','B',16);
+        // mencetak string 
+        $pdf->Cell(190,7,'DETAIL TRANSAKSI REKANAN',0,1,'C');
+        $pdf->SetFont('Arial','B',12);
+        $pdf->Cell(190,7,'CV JANEETA Group',0,1,'C');
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Arial','B',10);
+        $pdf->Cell(40,6,'Nama Rekanan',1,0);
+        $pdf->Cell(25,6,'Tanggal',1,0);
+        $pdf->Cell(70,6,'Deskripsi',1,0);
+        $pdf->Cell(25,6,'Debet',1,1);
+        $pdf->SetFont('Arial','',10);
+        $transaksi = $this->db->get('transaksi')->result();
+        foreach ($transaksi as $row){
+            $pdf->Cell(40,6,$row->id_rekanan,1,0);
+            $pdf->Cell(25,6,$row->tanggal,1,0);
+            $pdf->Cell(70,6,$row->deskripsi,1,0);
+            $pdf->Cell(25,6,$row->debet,1,1); 
+        }
+        $pdf->Output();
     }
 
 }

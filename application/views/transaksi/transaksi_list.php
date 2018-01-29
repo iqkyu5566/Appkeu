@@ -19,6 +19,7 @@
                         <div class="col-xs-5">
                             <div class='box-header' align="right">
                                 <?php echo anchor('transaksi/create/','Create',array('class'=>'btn btn-success btn-sm'));?>
+
                                 <?php echo anchor(site_url('transaksi/excel'), ' <i class="fa fa-file-excel-o"></i> Excel', 'class="btn btn-primary btn-sm"'); ?>
                                 <?php echo anchor(site_url('transaksi/word'), '<i class="fa fa-file-word-o"></i> Word', 'class="btn btn-primary btn-sm"'); ?>
                             </div>
@@ -90,7 +91,12 @@
             </div>
         </div>
     </div>
-</div>
+</div>      
+
          </section><!-- /.content -->
+
+
+
+
       
        

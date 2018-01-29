@@ -10,21 +10,23 @@
         <br>
 
         <div class='box box-primary'>
-          <form action="<?php echo $action; ?>" method="post"><table class='table table-bordered'>
+          <form action="<?php echo $action; ?>" method="post">
+            <table class='table table-bordered'>
 	           <tr>
               <td>Nama Rekanan <?php echo form_error('id_rekanan') ?></td>
               <td><?php echo cmb_dinamis('id_rekanan', 'rekanan', 'nama_rekanan', 'id_rekanan', $id_rekanan) ?></td>
 	           <tr>
               <td>Tanggal <?php echo form_error('tanggal') ?></td>
               <td>
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input class="form-control pull-right" id="tanggal" data-date-format='yy-mm-dd' name="tanggal" type="text" placeholder="dd/MM/yyyy" value="<?php echo $tanggal;?>"/>
-                </div> 
+                <div class="form-group">           
+                    <div class="col-sm-6">
+                    <input class="form-control" type="date" value="dd/mm/yyyy" name="tanggal">
+                    </div>
+                </div>
               </td>
                 <!-- /.input group -->
+
+               
 
 	           <tr>
               <td>Deskripsi <?php echo form_error('deskripsi') ?></td>
